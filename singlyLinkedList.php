@@ -49,8 +49,7 @@ class singlyLinkedList extends LinkedList {
     {
         if ($this->head != null)
         {
-            $temp = $this->head;
-            $temp->next = null;
+            $temp = clone $this->head;
             return $temp;
         }
 
