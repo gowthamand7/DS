@@ -27,9 +27,12 @@ class infix2Postfix extends stack_LinkedList {
 
     }
 
-    function convert()
+    function convert ($expression = null)
     {
-        $expression = '(' . preg_replace ('/\s+/', '', $this->expression) . ')';
+        if ($expression == null)
+            $expression = '(' . preg_replace ('/\s+/', '', $this->expression) . ')';
+        else
+            $expression = '(' . preg_replace ('/\s+/', '', $expression) . ')';
 
         $this->out = '';
 
@@ -108,6 +111,3 @@ class infix2Postfix extends stack_LinkedList {
     }
 
 }
-
-$d = new infix2Postfix ("a+b^(c-d)+z*h");
-echo $d->convert();

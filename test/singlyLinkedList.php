@@ -46,6 +46,6 @@ Echo "Find Node - 2" . PHP_EOL;
 echo $sl->find (2);
 echo PHP_EOL;
 Echo "Reverse" . PHP_EOL;
-$sl->reverseList ();
+$sl->reverseList_g ();
 $sl->readList ();
 echo PHP_EOL;
