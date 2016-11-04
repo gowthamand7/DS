@@ -132,6 +132,11 @@ class binary_search_tree {
 
     }
 
+    function delete ()
+    {
+        
+    }
+
 }
 
 class node {
