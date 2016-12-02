@@ -1,18 +1,5 @@
-1. Singly LinkedList baseclase
-2. doubly LinkedList baseclase
-3. Stack by using Singly LinkedList
-4. Stack by using Array
-5. Infix to postfix by using stack linked list(http://csis.pace.edu/~wolf/CS122/infix-postfix.htm)
-R. Postfix calculator by using stack linked list
-7. Queue by using linked list
-8. Priority Queue by using linked list
-9. Binary search tree with following 
-	a. Add
-	b. Delete
-	c. Search
-	d. Traverse by pre ,Post , In order
-		pre-order (process , vist left , vist right)
-		inorder (vist left,process value, vist right)
-		post-order(vist left,vist right, process)
-10. Hash tables with djb2 algorithmn(crc32 or sha1)
-11. Counting the words by using hash tables
+1. Bubble Sort
+2. Insertion Sort
+3. Merge Sort
+4. Quick Sort
+5. Selection Sort

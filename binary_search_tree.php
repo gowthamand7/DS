@@ -1,5 +1,7 @@
 <?php
 
+require_once 'autoLoad.php';
+
 class binary_search_tree {
 
     private $root = null;
