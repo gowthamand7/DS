@@ -2,35 +2,31 @@
 
 require_once 'autoLoad.php';
 
-class Bubble_Sort {
-
+class Bubble_Sort
+{
     private $unsorted = [];
 
-    public function __construct ($unsorted)
+    public function __construct($unsorted)
     {
         $this->unsorted = $unsorted;
-
     }
 
     /**
-     * 
      * @param string which type of sort it like asc or desc
-     * @return array sorted array 
+     *
+     * @return array sorted array
      */
-    public function sort ($type = 'asc')
+    public function sort($type = 'asc')
     {
-        $length = count ($this->unsorted) - 1;
+        $length = count($this->unsorted) - 1;
         $compare_method = ($type == 'asc') ? 'graterthan' : 'lessthan';
-        do
-        {
+        do {
             $swaped = false;
-            for ($i = 0; $i < $length; $i++)
-            {
+            for ($i = 0; $i < $length; $i++) {
                 if (
-                        $this->$compare_method (
+                        $this->$compare_method(
                                 $this->unsorted[$i], $this->unsorted[$i + 1])
-                )
-                {
+                ) {
                     $temp = $this->unsorted[$i];
                     $this->unsorted[$i] = $this->unsorted[$i + 1];
                     $this->unsorted[$i + 1] = $temp;
@@ -38,20 +34,17 @@ class Bubble_Sort {
                 }
             }
         } while ($swaped);
-        return $this->unsorted;
 
+        return $this->unsorted;
     }
 
-    public function graterthan ($a, $b)
+    public function graterthan($a, $b)
     {
         return $a > $b;
-
     }
 
-    public function lessthan ($a, $b)
+    public function lessthan($a, $b)
     {
         return $a < $b;
-
     }
-
 }

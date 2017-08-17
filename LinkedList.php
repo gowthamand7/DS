@@ -1,35 +1,34 @@
 <?php
 
-abstract class LinkedList {
-
+abstract class LinkedList
+{
     public $head = null;
     public $tail = null;
     public $count = 0;
-    
+
     /**
-     * Check wether the list is empty 
+     * Check wether the list is empty.
+     *
      * @return bool
      */
-    function isEmpty ()
+    public function isEmpty()
     {
-        return ($this->head == null);
-
+        return $this->head == null;
     }
 
-    abstract function addFirst ($value);
+    abstract public function addFirst($value);
 
-    abstract function addLast ($value);
+    abstract public function addLast($value);
 
-    abstract function removeFirst ();
+    abstract public function removeFirst();
 
-    abstract function removeLast ();
+    abstract public function removeLast();
 
-    abstract function removeNode ($value);
+    abstract public function removeNode($value);
 
-    abstract function find ($value);
+    abstract public function find($value);
 
-    abstract function readList ();
+    abstract public function readList();
 
-    abstract function reverseList ();
-
+    abstract public function reverseList();
 }

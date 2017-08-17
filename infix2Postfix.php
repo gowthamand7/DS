@@ -2,112 +2,99 @@
 
 require_once 'autoLoad.php';
 
-class infix2Postfix extends stack_LinkedList {
-
+class infix2Postfix extends stack_LinkedList
+{
     private $expression = null;
     private $out = null;
-    private $operators = array('^' => 9,
-        '*' => 8,
-        '/' => 8,
-        '%' => 8,
-        '+' => 5,
-        '-' => 5,
-        '(' => 0,
-        ')' => 0);
+    private $operators = ['^' => 9,
+        '*'                   => 8,
+        '/'                   => 8,
+        '%'                   => 8,
+        '+'                   => 5,
+        '-'                   => 5,
+        '('                   => 0,
+        ')'                   => 0, ];
 
-    function __construct ($expression)
+    public function __construct($expression)
     {
         $this->expression = $expression;
-
     }
 
-    function is_operator ($char)
+    public function is_operator($char)
     {
-        return array_key_exists ($char, $this->operators);
-
+        return array_key_exists($char, $this->operators);
     }
 
-    function convert ($expression = null)
+    public function convert($expression = null)
     {
-        if ($expression == null)
-            $expression = '(' . preg_replace ('/\s+/', '', $this->expression) . ')';
-        else
-            $expression = '(' . preg_replace ('/\s+/', '', $expression) . ')';
+        if ($expression == null) {
+            $expression = '('.preg_replace('/\s+/', '', $this->expression).')';
+        } else {
+            $expression = '('.preg_replace('/\s+/', '', $expression).')';
+        }
 
         $this->out = '';
 
-        for ($i = 0; $i < strlen ($expression); $i++)
-        {
+        for ($i = 0; $i < strlen($expression); $i++) {
             $char = $expression[$i];
 
-            if ($this->is_operator ($char))
-            {
-                if ($char == '(')
-                {
-                    $this->push ($char);
-                } else if ($char == ')')
-                {
-                    while ($this->count > 0 && ($top = $this->peek ()) != '(')
-                    {
-                        $this->out .= $this->pop ();
+            if ($this->is_operator($char)) {
+                if ($char == '(') {
+                    $this->push($char);
+                } elseif ($char == ')') {
+                    while ($this->count > 0 && ($top = $this->peek()) != '(') {
+                        $this->out .= $this->pop();
                     }
-                    $this->pop ();
-                } else
-                {
-                    while ($this->count > 0)
-                    {
-                        $peek = $this->peek ();
+                    $this->pop();
+                } else {
+                    while ($this->count > 0) {
+                        $peek = $this->peek();
 
-                        if ($this->precedence ($char) <= $this->precedence ($peek))
-                        {
-                            $this->out .= $this->pop ();
-                        } else
-                        {
+                        if ($this->precedence($char) <= $this->precedence($peek)) {
+                            $this->out .= $this->pop();
+                        } else {
                             break;
                         }
                     }
 
-                    $this->push ($char);
+                    $this->push($char);
                 }
-            } else
-            {
+            } else {
                 $this->out .= $char;
             }
         }
 
-        while ($this->count > 0)
-        {
-            if ($this->peek () == '(')
-            {
-                $this->pop ();
-            } else
-            {
-                $this->out .= $this->pop ();
+        while ($this->count > 0) {
+            if ($this->peek() == '(') {
+                $this->pop();
+            } else {
+                $this->out .= $this->pop();
             }
         }
 
         return $this->out;
-
     }
 
-    function precedence ($opchar)
+    public function precedence($opchar)
     {
         return $this->operators[$opchar];
-
     }
 
-    function getprecedence ($char)
+    public function getprecedence($char)
     {
-        if ($char == '+' || $char == '-')
-            return(1);
-        if ($char == '*' || $char == '/' || $char == '%')
-            return(2);
-        if ($char == '^')
-            return(3);
-        if ($char == '(' || $char == ')')
-            return(5);
-        return(4);
+        if ($char == '+' || $char == '-') {
+            return 1;
+        }
+        if ($char == '*' || $char == '/' || $char == '%') {
+            return 2;
+        }
+        if ($char == '^') {
+            return 3;
+        }
+        if ($char == '(' || $char == ')') {
+            return 5;
+        }
 
+        return 4;
     }
-
 }

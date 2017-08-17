@@ -6,7 +6,7 @@ $emlData = base64_decode($rawemldata);
 
 echo $emlData;
 
-$sub = "=?utf-8?q?What_are_some_facts_less_known_about_Patanjali=3F_-_Quora?=";
+$sub = '=?utf-8?q?What_are_some_facts_less_known_about_Patanjali=3F_-_Quora?=';
 
 $sub_1 = utf8_decode($sub);
 
@@ -16,23 +16,20 @@ global $i;
 $i = 0;
 $basePath = 'E:/restore-fix-data-1/';
 
-create_5_fodler ($basePath, 0);
+create_5_fodler($basePath, 0);
 
-function create_5_fodler ($basePath, $level)
+function create_5_fodler($basePath, $level)
 {
     global $i;
     $baseName = 'Folder';
-    for ($j = 0; $j < 2; $j++)
-    {
-        $newPath = $basePath . $baseName . " - " . $i . "/";
-        mkdir ($newPath);
-        copy ('autoLoad.php', $newPath . 'autoLoad-' . $i . '.php');
+    for ($j = 0; $j < 2; $j++) {
+        $newPath = $basePath.$baseName.' - '.$i.'/';
+        mkdir($newPath);
+        copy('autoLoad.php', $newPath.'autoLoad-'.$i.'.php');
         $i++;
-        if ($level < 5)
-        {
+        if ($level < 5) {
             $level_ = $level + 1;
-            create_5_fodler ($newPath, $level_);
+            create_5_fodler($newPath, $level_);
         }
     }
-
 }
