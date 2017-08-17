@@ -2,26 +2,24 @@
 
 require_once 'autoLoad.php';
 
-class stack_LinkedList extends singlyLinkedList implements Stack {
-
-    function push ($value)
+class stack_LinkedList extends singlyLinkedList implements Stack
+{
+    public function push($value)
     {
-        parent::addFirst ($value);
-
+        parent::addFirst($value);
     }
 
-    function pop ()
+    public function pop()
     {
-        $node = parent::removeFirst ();
+        $node = parent::removeFirst();
+
         return $node->value;
-
     }
 
-    function peek ()
+    public function peek()
     {
-        $node = parent::getFirst ();
+        $node = parent::getFirst();
+
         return $node->value;
-
     }
-
 }

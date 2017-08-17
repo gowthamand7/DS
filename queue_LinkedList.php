@@ -2,18 +2,15 @@
 
 require_once 'autoLoad.php';
 
-class queue_LinkedList extends singlyLinkedList {
-
-    function enqueue ($value)
+class queue_LinkedList extends singlyLinkedList
+{
+    public function enqueue($value)
     {
-        parent::addLast ($value);
-
+        parent::addLast($value);
     }
 
-    function dequeue ()
+    public function dequeue()
     {
-        return parent::removeFirst ()->value;
-
+        return parent::removeFirst()->value;
     }
-
 }

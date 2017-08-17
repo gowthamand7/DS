@@ -1,11 +1,10 @@
 <?php
 
-interface Stack {
+interface stack
+{
+    public function push($value);
 
-    function push ($value);
+    public function pop();
 
-    function pop ();
-
-    function peek();
-
+    public function peek();
 }
